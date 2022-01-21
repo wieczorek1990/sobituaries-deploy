@@ -48,6 +48,9 @@ then
 fi
 nohup daphne sobituaries.asgi:application > /var/log/daphne.log &
 
+mv /root/nginx.conf /etc/nginx/
+nginx -s reload
+
 rm /root/remote.sh
 
 print 'Done.'

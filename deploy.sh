@@ -30,10 +30,7 @@ cp envs.website/envs.json sobituaries/website/js/
 
 tar cfz sobituaries.tar.gz sobituaries/
 print "Password for scp:"
-scp sobituaries.tar.gz root@nekrologi:/root/
-
-print "Password for scp:"
-scp remote.sh root@nekrologi:/root/
+scp sobituaries.tar.gz nginx.conf remote.sh root@nekrologi:/root/
 
 print "Password for ssh:"
 ssh root@nekrologi /root/remote.sh
