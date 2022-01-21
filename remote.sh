@@ -14,9 +14,6 @@ rm /root/sobituaries.tar.gz
 rm -rf /srv/sobituaries/
 mv /root/sobituaries /srv/
 
-chown -R root:root /srv/sobituaries/
-chcon -Rt httpd_sys_content_t /srv/sobituaries/
-
 cd /srv/sobituaries/
 
 pip install -r requirements.txt
@@ -41,6 +38,9 @@ cd /srv/sobituaries/sobituaries/
 
 python manage.py collectstatic --noinput
 python manage.py migrate --noinput
+
+chown -R root:root /srv/sobituaries/
+chcon -Rt httpd_sys_content_t /srv/sobituaries/website/ /srv/sobituaries/sobituaries/static/
 
 if pgrep daphne
 then
