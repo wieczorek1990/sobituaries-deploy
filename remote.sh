@@ -49,6 +49,8 @@ fi
 nohup daphne sobituaries.asgi:application > /var/log/daphne.log &
 
 mv /root/nginx.conf /etc/nginx/
+chcon -Rt httpd_sys_content_t /etc/nginx/nginx.conf
+nginx -t
 nginx -s reload
 
 rm /root/remote.sh
