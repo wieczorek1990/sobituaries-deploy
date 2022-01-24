@@ -46,12 +46,14 @@ if pgrep daphne
 then
   pkill daphne
 fi
-nohup daphne sobituaries.asgi:application > /var/log/daphne.log &
+nohup daphne sobituaries.asgi:application >> /var/log/daphne.log &
 
 mv /root/nginx.conf /etc/nginx/
 chcon -Rt httpd_sys_content_t /etc/nginx/nginx.conf
 nginx -t
 nginx -s reload
+
+setsebool -P httpd_can_network_connect 1
 
 rm /root/remote.sh
 
