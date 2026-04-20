@@ -9,6 +9,15 @@ function print {
   echo "${bold}$1${normal}"
 }
 
+read -p "Hostname: " hostname
+echo "Hostname given: $hostname"
+
+if [[ -z $hostname ]]
+then
+    echo -e "Invalid hostname.\nUsage:\tdeploy.sh $hostname"
+    exit 1
+fi
+
 DEPLOY_DATETIME=$(date +"%d-%m-%Y+%H:%M:%S")
 print "Starting new deploy, date is ${DEPLOY_DATETIME}."
 
@@ -30,7 +39,7 @@ cp envs.website/envs.json sobituaries/website/js/
 
 tar cfz sobituaries.tar.gz sobituaries/
 print "Password for scp:"
-scp sobituaries.tar.gz nginx.conf remote.sh root@nekrologi:/root/
+scp sobituaries.tar.gz nginx.conf remote.sh root@$hostname:/root/
 
 print "Password for ssh:"
-ssh root@nekrologi /root/remote.sh
+ssh root@$hostname /root/remote.sh
