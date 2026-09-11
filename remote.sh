@@ -24,6 +24,7 @@ do
 done
 rm -rf envs/
 export DEPLOY_DATETIME \
+       DEPLOY_GIT_HASH \
        DJANGO_DEBUG \
        DJANGO_SECRET_KEY \
        STRIPE_API_KEY \
