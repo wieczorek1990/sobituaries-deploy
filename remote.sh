@@ -16,7 +16,7 @@ mv /root/sobituaries /srv/
 
 cd /srv/sobituaries/
 
-pip install -r requirements.txt
+pip install -U -r requirements.txt
 
 for file in envs/*.sh
 do
