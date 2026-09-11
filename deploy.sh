@@ -25,6 +25,9 @@ rm -rf sobituaries/
 print "Password for git clone:"
 git clone git@github.com:wieczorek1990/sobituaries.git
 
+hash=$(git rev-parse --short HEAD)
+print "Git hash is ${hash}."
+
 rm -rf sobituaries/.git/
 
 rm -f envs/*.sh
