@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# Deploy script.
 set -e
 
 bold="$(tput -T linux bold)"
@@ -8,6 +8,8 @@ normal="$(tput -T linux sgr0)"
 function print {
   echo "${bold}$1${normal}"
 }
+
+print "Guard!"
 
 tar xfz /root/sobituaries.tar.gz
 rm /root/sobituaries.tar.gz
