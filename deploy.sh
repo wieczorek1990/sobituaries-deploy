@@ -25,8 +25,8 @@ rm -rf sobituaries/
 print "Password for git clone:"
 git clone git@github.com:wieczorek1990/sobituaries.git
 
-hash=$(git rev-parse --short HEAD)
-print "Git hash is ${hash}."
+DEPLOY_GIT_HASH=$(git rev-parse --short HEAD)
+print "Git hash is ${DEPLOY_GIT_HASH}."
 
 rm -rf sobituaries/.git/
 
@@ -36,6 +36,7 @@ do
   python3 preprocess_envs.py "${file}"
 done
 echo "DEPLOY_DATETIME='${DEPLOY_DATETIME}'" > envs/deploy.sh
+echo "DEPLOY_GIT_HASH='${DEPLOY_GIT_HASH}'" >> envs/deploy.sh
 
 cp -r envs sobituaries/
 cp envs.website/envs.json sobituaries/website/js/
